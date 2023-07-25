@@ -24,6 +24,7 @@ public class EventController {
     }
     @GetMapping("create")
     public String renderCreateEventForm(){
+
         return "events/create";
     }
 
