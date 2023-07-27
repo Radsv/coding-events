@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-
-<body class="container">
+<link th:href="@{styles.css}" rel="stylesheet"/>
+<body >
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${events} and ${events.size()}">No Events!</p>
-<table class="table table-striped">
-   <thead>
+<table class="center">
+
    <tr>
-      <th>Name</th>
+      <th>Event Name</th>
+      <thead>Description</thead>
+      <th>Address</th>
    </tr>
-   </thead>
-   <tr th:each="event : ${events}">
-      <td th:text="${event}"></td>
-   </tr>
-</table>
+   <th:block th:each="event : ${events}">
+      <tr>
+         <td th:text="${event.key}"></td>
+         <td th:text="${event.value}"></td>
+         <th:block th:if='${event.key.equals("CES")}'>
+            <td th:replace="fragments :: cesAddress"></td>
+         </th:block>
+         <th:block th:if='${event.key.equals("CES")}'>
+            <td th:replace="fragments :: hourOFCodeAddress"></td>
+         </th:block>
+         <th:block th:if='${event.key.equals("CES")}'>
+            <td th:replace="fragments :: strangeLoopAddress"></td>
+         </th:block>
+      </tr>
+
+   </th:block>
+   </table>
 </body>
 </html>
