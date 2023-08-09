@@ -6,3 +6,8 @@ color:purple;
 .error {
 color:red;
 }
+
+.checkbox {
+    height: 25px;
+    width: 25px;
+}
